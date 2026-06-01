@@ -9,12 +9,13 @@ class DatabaseSeeder extends Seeder
 {
     public function run(): void
     {
-        // Gumawa ng admin account
-        User::create([
-            'name'     => 'Admin',
-            'email'    => 'admin@notesmanager.com',
-            'password' => bcrypt('admin123'),
-            'role'     => 'admin',
-        ]);
+        User::firstOrCreate(
+            ['email' => 'admin@notesmanager.com'],
+            [
+                'name'     => 'Admin',
+                'password' => bcrypt('admin123'),
+                'role'     => 'admin',
+            ]
+        );
     }
 }
